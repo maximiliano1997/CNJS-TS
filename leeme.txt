@@ -1,0 +1,17 @@
+npm install -g typescript
+
+
+configura 
+    "dev": "ts-node src/index.ts",
+
+
+npm install express --save
+
+    npm i --save-dev @types/express
+
+
+
+->>> https://orm.drizzle.team/docs/tutorials/drizzle-with-turso
+
+npm i drizzle-orm
+npm i -D drizzle-kit
