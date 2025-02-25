@@ -1,0 +1,218 @@
+{
+  "version": "6",
+  "dialect": "sqlite",
+  "id": "ca753aba-3d78-496e-8b5a-52edf9d4a47d",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "file": {
+      "name": "file",
+      "columns": {
+        "id_file": {
+          "name": "id_file",
+          "type": "text(36)",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id_folder": {
+          "name": "id_folder",
+          "type": "text(36)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "file_name": {
+          "name": "file_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "url": {
+          "name": "url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "aws_key": {
+          "name": "aws_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "id_folder_idx": {
+          "name": "id_folder_idx",
+          "columns": [
+            "id_folder"
+          ],
+          "isUnique": false
+        },
+        "file_name_idx": {
+          "name": "file_name_idx",
+          "columns": [
+            "file_name"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "file_id_folder_folder_id_folder_fk": {
+          "name": "file_id_folder_folder_id_folder_fk",
+          "tableFrom": "file",
+          "tableTo": "folder",
+          "columnsFrom": [
+            "id_folder"
+          ],
+          "columnsTo": [
+            "id_folder"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "folder": {
+      "name": "folder",
+      "columns": {
+        "id_folder": {
+          "name": "id_folder",
+          "type": "text(36)",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id_parent": {
+          "name": "id_parent",
+          "type": "text(36)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "id_user": {
+          "name": "id_user",
+          "type": "text(36)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "folder_name": {
+          "name": "folder_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "id_parent_idx": {
+          "name": "id_parent_idx",
+          "columns": [
+            "id_parent"
+          ],
+          "isUnique": false
+        },
+        "folder_name_idx": {
+          "name": "folder_name_idx",
+          "columns": [
+            "folder_name"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "folder_id_parent_folder_id_folder_fk": {
+          "name": "folder_id_parent_folder_id_folder_fk",
+          "tableFrom": "folder",
+          "tableTo": "folder",
+          "columnsFrom": [
+            "id_parent"
+          ],
+          "columnsTo": [
+            "id_folder"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        },
+        "folder_id_user_user_id_user_fk": {
+          "name": "folder_id_user_user_id_user_fk",
+          "tableFrom": "folder",
+          "tableTo": "user",
+          "columnsFrom": [
+            "id_user"
+          ],
+          "columnsTo": [
+            "id_user"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    },
+    "user": {
+      "name": "user",
+      "columns": {
+        "id_user": {
+          "name": "id_user",
+          "type": "text(36)",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "password": {
+          "name": "password",
+          "type": "text(60)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {
+        "user_email_unique": {
+          "name": "user_email_unique",
+          "columns": [
+            "email"
+          ],
+          "isUnique": true
+        },
+        "email_idx": {
+          "name": "email_idx",
+          "columns": [
+            "email"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "checkConstraints": {}
+    }
+  },
+  "views": {},
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  },
+  "internal": {
+    "indexes": {}
+  }
+}
