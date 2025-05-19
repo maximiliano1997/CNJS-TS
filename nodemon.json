@@ -1,0 +1,12 @@
+{
+    "watch": [
+        "src",
+        "db"
+    ],
+    "ext": "ts,js,json",
+    "exec": "ts-node --transpile-only src/index.ts",
+    "ignore": [
+        "node_modules",
+        "dist"
+    ]
+}

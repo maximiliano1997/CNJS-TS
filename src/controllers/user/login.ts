@@ -4,6 +4,7 @@ import { db } from "../../db/db"
 import { eq } from "drizzle-orm"
 import { user } from "../../db/models/schema"
 import bcrypt from 'bcryptjs'
+import { signToken, verifyToken } from '../../utils/token'
 
 export const loginController = async (req: Request, res: Response) => {
     try {
@@ -44,8 +45,11 @@ export const loginController = async (req: Request, res: Response) => {
             })
         }
 
+        const token = signToken(id_user, email)
+
         return res.json({
             message: 'Welcomed',
+            token,
             user: {
                 id_user,
                 email
